@@ -26,6 +26,12 @@ $route['admin/orders'] = 'admin/orders';
 // Pages routes
 $route['about'] = 'pages/about';
 
+// eSIM Routes
+$route['esim'] = 'esim/index';
+$route['esim/product/(:num)'] = 'esim/product/$1';
+$route['esim/checkout'] = 'esim/checkout';
+$route['esim/order/(:num)'] = 'esim/order/$1';
+
 // 404 Override
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
