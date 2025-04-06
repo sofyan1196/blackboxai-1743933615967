@@ -1,7 +1,15 @@
 <?php
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/application/config/config.php';
+
+// Load database configuration
+require_once __DIR__ . '/application/config/database.php';
 
 try {
+    // Create database connection
+    $dsn = "mysql:host=".$db['default']['hostname'].";dbname=".$db['default']['database'];
+    $pdo = new PDO($dsn, $db['default']['username'], $db['default']['password']);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     // Get all products
     $products = $pdo->query("SELECT * FROM products ORDER BY id DESC")->fetchAll();
 } catch (PDOException $e) {
